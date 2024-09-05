@@ -1,10 +1,10 @@
 {% extends 'base.html' %}
 {% block title %}
-Add Farming
+Add Products
 {% endblock title %}
 
 {% block body %}
- <h3 class="text-center bg-success text-white"><span>Add Farming</span> </h3>
+ <h3 class="text-center bg-success text-white"><span>Add Product</span> </h3>
   
 {% with messages=get_flashed_messages(with_categories=true) %}
 {% if messages %}
@@ -30,12 +30,12 @@ Add Farming
 
 
 <div class="form-group">
-<label for="dept">Enter Farming Type</label>
+<label for="dept">Enter Product Type</label>
 <input type="text" class="form-control" name="farming" id="farming">
 </div>
 <br>
 
-  <button type="submit" class="btn btn-success btn-sm btn-block">Add Farming</button>
+  <button type="submit" class="btn btn-success btn-sm btn-block">Add Product</button>
 </form>
 <br>
 <br>
