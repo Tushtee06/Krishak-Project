@@ -67,6 +67,15 @@ class Register(db.Model):
     address=db.Column(db.String(50))
     farming=db.Column(db.String(50))
     
+class Product(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    productname = db.Column(db.String(100), nullable=False)
+    price = db.Column(db.Float, nullable=False)
+    productdesc = db.Column(db.Text, nullable=False)
+    username = db.Column(db.String(100), nullable=False)
+    email = db.Column(db.String(120), nullable=False)
+    phone = db.Column(db.String(20))  # Added phone number field
+    
 
 @app.route('/')
 def index(): 
@@ -257,4 +266,27 @@ def test():
         return 'My db is not Connected'
 
 
-app.run(debug=True)    
+@app.route('/products')
+def products():
+    query = Product.query.all()
+    return render_template('products.html', query=query)
+
+@app.route('/addproduct', methods=['POST', 'GET'])
+@login_required
+def addproduct():
+    if request.method == "POST":
+        username = request.form.get('username')
+        email = request.form.get('email')
+        phone = request.form.get('phone')  # Retrieve phone number
+        productname = request.form.get('productname')
+        productdesc = request.form.get('productdesc')
+        price = request.form.get('price')
+        product = Product(username=username, email=email, phone=phone, productname=productname, productdesc=productdesc, price=price)
+        db.session.add(product)
+        db.session.commit()
+        flash("Product Added", "info")
+        return redirect('/products')
+
+    return
+
+# app.run(debug=True)    
