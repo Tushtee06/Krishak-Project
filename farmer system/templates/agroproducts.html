@@ -3,8 +3,6 @@
 Products
 {% endblock title %}
 
-
-
 {% block body %}
  <h3 class="text-center"><span>Products</span> </h3>
   
@@ -14,8 +12,6 @@ Products
 
 <div class="alert alert-{{category}} alert-dismissible fade show" role="alert">
     {{message}}
-
-
 </div>
   {% endfor %}
   {% endif %}
@@ -34,19 +30,16 @@ Products
         <hr>
         <p class="card-text">{{p.productdesc}}</p>
         
- 
         <p>Owner : {{p.username}}</p>
         <p>Email : {{p.email}}</p>
-      
-
+        <p>Phone : {{p.phone}}</p>  <!-- Added phone number here -->
         
-        <a href="https://mail.google.com/mail/?view=cm&fs=1&tf=1&to={{p.email}}" target="_blank" class="btn btn-success ">Purchase</a>
+        <a href="https://mail.google.com/mail/?view=cm&fs=1&tf=1&to={{p.email}}" target="_blank" class="btn btn-success">Purchase via Email</a>
+        <a href="tel:{{p.phone}}" class="btn btn-info">Call</a> <!-- Added Call button -->
       </div>
     </div>
   </div>
   {% endfor %}
 </div>
-  
-
 </div>
 {% endblock body %}
