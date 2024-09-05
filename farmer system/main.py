@@ -289,4 +289,4 @@ def addproduct():
 
     return
 
-# app.run(debug=True)    
+app.run(debug=True)    
