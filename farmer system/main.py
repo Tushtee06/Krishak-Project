@@ -66,7 +66,6 @@ class Register(db.Model):
     phonenumber=db.Column(db.String(50))
     address=db.Column(db.String(50))
     farming=db.Column(db.String(50))
-
     
 
 @app.route('/')
