@@ -74,7 +74,9 @@ class Product(db.Model):
     productdesc = db.Column(db.Text, nullable=False)
     username = db.Column(db.String(100), nullable=False)
     email = db.Column(db.String(120), nullable=False)
-    phone = db.Column(db.String(20))  # Added phone number field
+    phone = db.Column(db.String(20))
+    location = db.Column(db.String(200), nullable=False)  # Added location field
+
     
 
 @app.route('/')
@@ -94,22 +96,26 @@ def agroproducts():
     query=Addagroproducts.query.all()
     return render_template('agroproducts.html',query=query)
 
-@app.route('/addagroproduct',methods=['POST','GET'])
+@app.route('/addagroproduct', methods=['POST', 'GET'])
 @login_required
 def addagroproduct():
-    if request.method=="POST":
-        username=request.form.get('username')
-        email=request.form.get('email')
-        productname=request.form.get('productname')
-        productdesc=request.form.get('productdesc')
-        price=request.form.get('price')
-        products=Addagroproducts(username=username,email=email,productname=productname,productdesc=productdesc,price=price)
-        db.session.add(products)
+    if request.method == "POST":
+        username = request.form.get('username')
+        email = request.form.get('email')
+        productname = request.form.get('productname')
+        productdesc = request.form.get('productdesc')
+        price = request.form.get('price')
+        location = request.form.get('location')  # Collect location data
+
+        product = Addagroproducts(username=username, email=email, productname=productname,
+                                  productdesc=productdesc, price=price, location=location)
+        db.session.add(product)
         db.session.commit()
-        flash("Product Added","info")
+        flash("Product Added", "info")
         return redirect('/agroproducts')
-   
+    
     return render_template('addagroproducts.html')
+
 
 @app.route('/triggers')
 @login_required
