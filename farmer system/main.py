@@ -41,7 +41,7 @@ class Addagroproducts(db.Model):
     productname=db.Column(db.String(100))
     productdesc=db.Column(db.String(300))
     price=db.Column(db.Integer)
-    Location=db.Column(db.String(50))
+    
 
 
 
