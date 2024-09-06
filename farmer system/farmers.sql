@@ -30,22 +30,21 @@ SET time_zone = "+00:00";
 CREATE TABLE `addagroproducts` (
   `username` varchar(50) NOT NULL,
   `email` varchar(50) NOT NULL,
-  `pid` int(11) NOT NULL AUTO_INCREMENT,
+  `pid` int(11) NOT NULL,
   `productname` varchar(100) NOT NULL,
   `productdesc` text NOT NULL,
-  `price` int(11) NOT NULL,
-  `location` varchar(200) NOT NULL,
-  PRIMARY KEY (`pid`)
+  `price` int(100) NOT NULL,
+  `Location` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `addagroproducts`
 --
 
-INSERT INTO `addagroproducts` (`username`, `email`, `pid`, `productname`, `productdesc`, `price`, `location`) VALUES
-('test', 'test@gmail.com', 1, 'GIRIJA CAULIFLOWER', ' Tips for Growing Cauliflower. Well drained medium loam and or sandy loam soils are suitable.', 520, 'Location1'),
-('test', 'test@gmail.com', 2, 'COTTON', 'Cotton is a soft, fluffy staple fiber that grows in a boll,around the seeds of the cotton ', 563, 'Location2'),
-('arkpro', 'arkpro@gmail.com', 3, 'silk', 'silk is best business developed from coocon for saries preparation and so on', 582, 'Location3');
+INSERT INTO `addagroproducts` (`username`, `email`, `pid`, `productname`, `productdesc`, `price`) VALUES
+('test', 'test@gmail.com', 1, 'GIRIJA CAULIFLOWER', ' Tips for Growing Cauliflower. Well drained medium loam and or sandy loam soils are suitable.', 520),
+('test', 'test@gmail.com', 2, 'COTTON', 'Cotton is a soft, fluffy staple fiber that grows in a boll,around the seeds of the cotton ', 563),
+('arkpro', 'arkpro@gmail.com', 3, 'silk', 'silk is best business developed from coocon for saries preparation and so on', 582);
 
 -- --------------------------------------------------------
 
@@ -54,9 +53,8 @@ INSERT INTO `addagroproducts` (`username`, `email`, `pid`, `productname`, `produ
 --
 
 CREATE TABLE `farming` (
-  `fid` int(11) NOT NULL AUTO_INCREMENT,
-  `farmingtype` varchar(200) NOT NULL,
-  PRIMARY KEY (`fid`)
+  `fid` int(11) NOT NULL,
+  `farmingtype` varchar(200) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -75,15 +73,14 @@ INSERT INTO `farming` (`fid`, `farmingtype`) VALUES
 --
 
 CREATE TABLE `register` (
-  `rid` int(11) NOT NULL AUTO_INCREMENT,
+  `rid` int(11) NOT NULL,
   `farmername` varchar(50) NOT NULL,
   `adharnumber` varchar(20) NOT NULL,
-  `age` int(11) NOT NULL,
+  `age` int(100) NOT NULL,
   `gender` varchar(50) NOT NULL,
   `phonenumber` varchar(12) NOT NULL,
   `address` varchar(50) NOT NULL,
-  `farming` varchar(50) NOT NULL,
-  PRIMARY KEY (`rid`)
+  `farming` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -109,9 +106,8 @@ DELIMITER ;
 --
 
 CREATE TABLE `test` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(50) NOT NULL,
-  PRIMARY KEY (`id`)
+  `id` int(11) NOT NULL,
+  `name` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -128,11 +124,10 @@ INSERT INTO `test` (`id`, `name`) VALUES
 --
 
 CREATE TABLE `trig` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int(11) NOT NULL,
   `fid` varchar(50) NOT NULL,
   `action` varchar(50) NOT NULL,
-  `timestamp` datetime NOT NULL,
-  PRIMARY KEY (`id`)
+  `timestamp` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -153,11 +148,10 @@ INSERT INTO `trig` (`id`, `fid`, `action`, `timestamp`) VALUES
 --
 
 CREATE TABLE `user` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int(11) NOT NULL,
   `username` varchar(50) NOT NULL,
   `email` varchar(50) NOT NULL,
-  `password` varchar(500) NOT NULL,
-  PRIMARY KEY (`id`)
+  `password` varchar(500) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
